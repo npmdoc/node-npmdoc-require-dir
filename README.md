@@ -1,11 +1,13 @@
-# api documentation for  [require-dir (v0.3.1)](https://github.com/aseemk/requireDir)  [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-require-dir.svg)](https://travis-ci.org/npmdoc/node-npmdoc-require-dir)
+# api documentation for  [require-dir (v0.3.1)](https://github.com/aseemk/requireDir)  [![npm package](https://img.shields.io/npm/v/npmdoc-require-dir.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-require-dir) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-require-dir.svg)](https://travis-ci.org/npmdoc/node-npmdoc-require-dir)
 #### Helper to require() directories.
 
 [![NPM](https://nodei.co/npm/require-dir.png?downloads=true)](https://www.npmjs.com/package/require-dir)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-require-dir/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-require_dir_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-require-dir/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-require-dir%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-require-dir/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-require-dir/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
