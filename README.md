@@ -1,9 +1,14 @@
-# api documentation for  [require-dir (v0.3.1)](https://github.com/aseemk/requireDir)  [![npm package](https://img.shields.io/npm/v/npmdoc-require-dir.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-require-dir) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-require-dir.svg)](https://travis-ci.org/npmdoc/node-npmdoc-require-dir)
+# npmdoc-require-dir
+
+#### api documentation for  [require-dir (v0.3.1)](https://github.com/aseemk/requireDir)  [![npm package](https://img.shields.io/npm/v/npmdoc-require-dir.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-require-dir) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-require-dir.svg)](https://travis-ci.org/npmdoc/node-npmdoc-require-dir)
+
 #### Helper to require() directories.
 
-[![NPM](https://nodei.co/npm/require-dir.png?downloads=true)](https://www.npmjs.com/package/require-dir)
+[![NPM](https://nodei.co/npm/require-dir.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/require-dir)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-require-dir%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-require-dir/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-require-dir/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-require-dir/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-require-dir/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-require-dir/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Aseem Kishore",
-        "email": "aseem.kishore@gmail.com"
+        "name": "Aseem Kishore"
     },
     "bugs": {
         "url": "https://github.com/aseemk/requireDir/issues"
@@ -44,13 +48,11 @@
     "license": "MIT",
     "maintainers": [
         {
-            "name": "aseemk",
-            "email": "aseem.kishore@gmail.com"
+            "name": "aseemk"
         }
     ],
     "name": "require-dir",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/aseemk/requireDir.git"
@@ -61,16 +63,6 @@
     "version": "0.3.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module require-dir](#apidoc.module.require-dir)
-
-
-
-# <a name="apidoc.module.require-dir"></a>[module require-dir](#apidoc.module.require-dir)
 
 
 
