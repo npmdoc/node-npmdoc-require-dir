@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/aseemk/requireDir"
-
-    >require-dir (v0.3.1)</a>
+    <a href="https://github.com/aseemk/requireDir">require-dir (v0.3.1)</a>
 </h1>
 <h4>Helper to require() directories.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.require-dir">module require-dir</a><ol>
 
@@ -87,21 +80,21 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function requireDir(dir, opts) {
     // default arguments:
-    dir = dir || &#x27;.&#x27;;
+    dir = dir || '.';
     opts = opts || {};
 
     // resolve the path to an absolute one:
     dir = Path.resolve(parentDir, dir);
 
-    // read the directory&#x27;s files:
-    // note that this&#x27;ll throw an error if the path isn&#x27;t a directory.
+    // read the directory's files:
+    // note that this'll throw an error if the path isn't a directory.
     var files = FS.readdirSync(dir);
 
-    // to prioritize between multiple files with the same basename, we&#x27;ll
+    // to prioritize between multiple files with the same basename, we'll
     // first derive all the basenames and create a map from them to files:
     var filesForBase = {};
 
-    for (var i = 0; i &#x3c; files.length; i++) {
+    for (var i = 0; i &lt; files.length; i++) {
         var file = files[i];
         var ext = Path.extname(file);
         var base = Path.basename(file, ext);
@@ -109,13 +102,13 @@
         (filesForBase[base] = filesForBase[base] || []).push(file);
     }
 
-    // then we&#x27;ll go through each basename, and first check if any of the
-    // basenames&#x27; files are directories, since directories take precedence if
-    // we&#x27;re recursing and can be ignored if we&#x27;re not. if a basename has no
-    // directory, then we&#x27;ll follow Node&#x27;s own require() algorithm of going
+    // then we'll go through each basename, and first check if any of the
+    // basenames' files are directories, since directories take precedence if
+    // we're recursing and can be ignored if we're not. if a basename has no
+    // directory, then we'll follow Node's own require() algorithm of going
     // through and trying the require.extension keys in order. in the process,
-    // we create and return a map from basename to require()&#x27;d contents! and
-    // if duplicates are asked for, we&#x27;ll never short-circuit; we&#x27;ll just add
+    // we create and return a map from basename to require()'d contents! and
+    // if duplicates are asked for, we'll never short-circuit; we'll just add
     // to the map using the full filename as a key also.
     var map = {};
 
@@ -125,13 +118,13 @@
             continue;
         }
 
-        // go through the files for this base and check for directories. we&#x27;ll
-        // also create a hash &#x22;set&#x22; of the non-dir files so that we can
+        // go through the files for this base and check for directories. we'll
+        // also create a hash "set" of the non-dir files so that we can
         // efficiently check for existence in the next step:
         var files = filesForBase[base];
         var filesMinusDirs = {};
 
-        for (var i = 0; i &#x3c; files.length; i++) {
+        for (var i = 0; i &lt; files.length; i++) {
             var file = files[i];
             var path = Path.resolve(dir, file);
 
@@ -142,7 +135,7 @@
 
             if (FS.statSync(path).isDirectory()) {
                 if (opts.recurse) {
-                    if (base === &#x27;node_modules&#x27;) {
+                    if (base === 'node_modules') {
                         continue;
                     }
 
@@ -158,9 +151,9 @@
             }
         }
 
-        // if we&#x27;re recursing and we already encountered a directory for this
-        // basename, we&#x27;re done for this base if we&#x27;re ignoring duplicates:
-        if (map[base] &#x26;&#x26; !opts.duplicates) {
+        // if we're recursing and we already encountered a directory for this
+        // basename, we're done for this base if we're ignoring duplicates:
+        if (map[base] &amp;&amp; !opts.duplicates) {
             continue;
         }
 
@@ -171,7 +164,7 @@
                 continue;
             }
 
-            // if a file exists with this extension, we&#x27;ll require() it:
+            // if a file exists with this extension, we'll require() it:
             var file = base + ext;
             var path = filesMinusDirs[file];
 
@@ -183,9 +176,9 @@
                 }
 
                 // if duplicates are wanted, key off the full name always, and
-                // also the base if it hasn&#x27;t been taken yet (since this ext
+                // also the base if it hasn't been taken yet (since this ext
                 // has higher priority than any that follow it). if duplicates
-                // aren&#x27;t wanted, we&#x27;re done with this basename.
+                // aren't wanted, we're done with this basename.
                 if (opts.duplicates) {
                     map[file] = require(path);
                     if (!map[base]) {
@@ -205,3 +198,4 @@
     ]
 </div>
 </div>
+</body></html>

@@ -61,12 +61,141 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.require-dir">module require-dir</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.require-dir.require-dir">
+            function <span class="apidocSignatureSpan"></span>require-dir
+            <span class="apidocSignatureSpan">(dir, opts)</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.require-dir" id="apidoc.module.require-dir">module require-dir</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.require-dir.require-dir" id="apidoc.element.require-dir.require-dir">
+        function <span class="apidocSignatureSpan"></span>require-dir
+        <span class="apidocSignatureSpan">(dir, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function requireDir(dir, opts) {
+    // default arguments:
+    dir = dir || &#x27;.&#x27;;
+    opts = opts || {};
+
+    // resolve the path to an absolute one:
+    dir = Path.resolve(parentDir, dir);
+
+    // read the directory&#x27;s files:
+    // note that this&#x27;ll throw an error if the path isn&#x27;t a directory.
+    var files = FS.readdirSync(dir);
+
+    // to prioritize between multiple files with the same basename, we&#x27;ll
+    // first derive all the basenames and create a map from them to files:
+    var filesForBase = {};
+
+    for (var i = 0; i &#x3c; files.length; i++) {
+        var file = files[i];
+        var ext = Path.extname(file);
+        var base = Path.basename(file, ext);
+
+        (filesForBase[base] = filesForBase[base] || []).push(file);
+    }
+
+    // then we&#x27;ll go through each basename, and first check if any of the
+    // basenames&#x27; files are directories, since directories take precedence if
+    // we&#x27;re recursing and can be ignored if we&#x27;re not. if a basename has no
+    // directory, then we&#x27;ll follow Node&#x27;s own require() algorithm of going
+    // through and trying the require.extension keys in order. in the process,
+    // we create and return a map from basename to require()&#x27;d contents! and
+    // if duplicates are asked for, we&#x27;ll never short-circuit; we&#x27;ll just add
+    // to the map using the full filename as a key also.
+    var map = {};
+
+    for (var base in filesForBase) {
+        // protect against enumerable object prototype extensions:
+        if (!filesForBase.hasOwnProperty(base)) {
+            continue;
+        }
+
+        // go through the files for this base and check for directories. we&#x27;ll
+        // also create a hash &#x22;set&#x22; of the non-dir files so that we can
+        // efficiently check for existence in the next step:
+        var files = filesForBase[base];
+        var filesMinusDirs = {};
+
+        for (var i = 0; i &#x3c; files.length; i++) {
+            var file = files[i];
+            var path = Path.resolve(dir, file);
+
+            // ignore the calling file:
+            if (path === parentFile) {
+                continue;
+            }
+
+            if (FS.statSync(path).isDirectory()) {
+                if (opts.recurse) {
+                    if (base === &#x27;node_modules&#x27;) {
+                        continue;
+                    }
+
+                    map[base] = requireDir(path, opts);
+
+                    // if duplicates are wanted, key off the full name too:
+                    if (opts.duplicates) {
+                        map[file] = map[base];
+                    }
+                }
+            } else {
+                filesMinusDirs[file] = path;
+            }
+        }
+
+        // if we&#x27;re recursing and we already encountered a directory for this
+        // basename, we&#x27;re done for this base if we&#x27;re ignoring duplicates:
+        if (map[base] &#x26;&#x26; !opts.duplicates) {
+            continue;
+        }
+
+        // otherwise, go through and try each require.extension key!
+        for (ext in require.extensions) {
+            // again protect against enumerable object prototype extensions:
+            if (!require.extensions.hasOwnProperty(ext)) {
+                continue;
+            }
+
+            // if a file exists with this extension, we&#x27;ll require() it:
+            var file = base + ext;
+            var path = filesMinusDirs[file];
+
+            if (path) {
+                // ignore TypeScript declaration files. They should never be
+                // `require`d
+                if (/\.d\.ts$/.test(path)) {
+                    continue;
+                }
+
+                // if duplicates are wanted, key off the full name always, and
+                // also the base if it hasn&#x27;t been taken yet (since this ext
+                // has higher priority than any that follow it). if duplicates
+                // aren&#x27;t wanted, we&#x27;re done with this basename.
+                if (opts.duplicates) {
+                    map[file] = require(path);
+                    if (!map[base]) {
+                        map[base] = map[file];
+                    }
+                } else {
+                    map[base] = require(path); ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 </div>
 
